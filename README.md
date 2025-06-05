@@ -43,7 +43,7 @@ The code is located in fusion/fusion2.ipynb
 
 4: **for** \( t = L, L-1, \ldots, 1 \) **do**
 
-5: $ \(\quad \boldsymbol{\epsilon}' \leftarrow \epsilon_{\theta}^{(t)}(\mathbf{x}_t) - w\sqrt{1-\bar{\alpha}_t} \nabla \log p_{\phi}(y|\mathbf{x}_t)\) $
+5: $$ \(\quad \boldsymbol{\epsilon}' \leftarrow \epsilon_{\theta}^{(t)}(\mathbf{x}_t) - w\sqrt{1-\bar{\alpha}_t} \nabla \log p_{\phi}(y|\mathbf{x}_t)\) $$
 
 6: \(\quad \mathbf{x}_{t-1} \leftarrow \sqrt{\alpha_{t-1}} \left( \frac{\mathbf{x}_t - \sqrt{1 - \alpha_t} \boldsymbol{\epsilon}'}{\sqrt{\alpha_t}} \right) + \sqrt{1 - \alpha_{t-1} - \sigma_t^2} \cdot \boldsymbol{\epsilon}'\)
 
