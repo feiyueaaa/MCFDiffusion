@@ -29,8 +29,28 @@ The code is located in fusion/fusion1.ipynb
 First, add the tumor area to the MRI images of a healthy brain, then add the denoising T-step to obtain the middle image, and finally denoise the middle image for the T-step to obtain the final result.
 The code is located in fusion/fusion2.ipynb
 
-## Image denoising
+## Algorithm workflow
+### MCFDiffusion Algorithm
 
+
+**Algorithm 1 MCFDiffusion**
+
+1: **input**₁: Three adjacent healthy brain MRI images were randomly selected as \( \mathbf{a} \).
+
+2: **input**₂: The tumor regions of three randomly adjacent brain tumor MRIs were extracted as \( \mathbf{b} \).
+
+3: \(\mathbf{x}_L \leftarrow \sqrt{\bar{\alpha}_L} \mathbf{a} + \frac{1}{2}\sqrt{1 - \bar{\alpha}_L} \boldsymbol{\epsilon} + \sqrt{\bar{\alpha}_L} \mathbf{b} + \frac{1}{2}\sqrt{1 - \bar{\alpha}_L} \boldsymbol{\epsilon}\)
+
+4: **for** \( t = L, L-1, \ldots, 1 \) **do**
+
+5: $ \(\quad \boldsymbol{\epsilon}' \leftarrow \epsilon_{\theta}^{(t)}(\mathbf{x}_t) - w\sqrt{1-\bar{\alpha}_t} \nabla \log p_{\phi}(y|\mathbf{x}_t)\) $
+
+6: \(\quad \mathbf{x}_{t-1} \leftarrow \sqrt{\alpha_{t-1}} \left( \frac{\mathbf{x}_t - \sqrt{1 - \alpha_t} \boldsymbol{\epsilon}'}{\sqrt{\alpha_t}} \right) + \sqrt{1 - \alpha_{t-1} - \sigma_t^2} \cdot \boldsymbol{\epsilon}'\)
+
+7: **end for**
+
+8: **return** \(\mathbf{x}_0\)
+![img](./img/img6.png)
 ## Result
 
 ### Image quality
@@ -38,4 +58,3 @@ The code is located in fusion/fusion2.ipynb
 ### Image classification
 
 ### Image Image segmentation
-
