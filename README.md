@@ -1,4 +1,5 @@
 [//]: # (#  The author is currently organizing the relevant code and data. Please wait patiently.)
+[![DOI](https://img.shields.io/badge/DOI-10.1038/s41598--025--06529--1-blue)](https://doi.org/10.1038/s41598-025-06529-1)
 # MFCDiffusion
  This is the codebase for Multi Channel Fusion Diffusion Models for Brain Tumor MRI Data Augmentation
 ## Model prototype
